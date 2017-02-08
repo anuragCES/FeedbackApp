@@ -11,13 +11,13 @@ var sampleAction = function (req,res){
 	res.json("Sample Response from Home Controller ")
 };
 
-var LoginAction = function(req, res){
+var login = function(req, res){
 	console.log(req.body);
 
 	res.json('Login Successful')
 };
 
-var SignupAction = function(req, res){
+var signup = function(req, res){
 	var users = new User();
 	users.firstname= req.body.firstname;
 	users.lastname= req.body.lastname;
@@ -41,6 +41,6 @@ var SignupAction = function(req, res){
 
 module.exports = {
 	sampleAction : sampleAction,
-	LoginAction  : LoginAction,
-	SignupAction : SignupAction
+	login  : login,
+	signup : signup
 };
