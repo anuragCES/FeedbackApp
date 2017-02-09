@@ -1,15 +1,11 @@
 import React, { PropTypes, Component } from 'react'
 // Components
-import { View, TextInput } from 'react-native'
-// import {inject,observer} from 'mobx-react/native';
+import { View, TextInput, Text } from 'react-native'
 
-import iconSets from './iconSets'
+import Icon from 'react-native-vector-icons/EvilIcons'
 
 // Styles
 import styles from './styles'
-
-// @inject('authStore')
-// @observer
 
 class TextInputComponent extends Component {
   constructor (props) {
@@ -23,18 +19,16 @@ class TextInputComponent extends Component {
     this.props.onChange(value)
   }
   render () {
-    const { icon, textStyle, placeholder, isPassword, placeholderTextColor, iconSet, color } = this.props
-    const Icon = iconSets[`${iconSet}`]
+    const { icon, textStyle, placeholder, isPassword, placeholderTextColor, color } = this.props
     return (
       <View style={styles.textInputContainer}>
-        {icon
-          ? <View style={styles.iconContainer}>
-            <Icon
-              name={icon}
-              size={30}
-              color={color}
-            />
-          </View> : null}
+        <View style={styles.iconContainer}>
+          <Icon
+            name={icon}
+            size={30}
+            color={color}
+          />
+        </View>
         <View style={styles.textInputView}>
           <TextInput
             style={textStyle}

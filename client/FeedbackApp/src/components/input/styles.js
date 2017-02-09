@@ -10,7 +10,6 @@ export default StyleSheet.create({
   iconContainer: {
     justifyContent: 'center',
     alignItems: 'flex-end',
-    marginTop: 10,
   },
   textInputView: {
     flex: 1,

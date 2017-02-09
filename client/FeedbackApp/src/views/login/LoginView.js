@@ -36,11 +36,13 @@ export default class LoginView extends Component {
           </View>
           <View style={styles.textInputStyle} >
             <TextInputComponent
+              icon='user'
               placeholder='Enter User Name'
               onChange={(username) => this.props.authStore.setUsername(username)}
               value={this.props.authStore.username}
             />
             <TextInputComponent
+              icon='lock'
               placeholder='Enter Password'
               onChange={(pwd) => this.props.authStore.setPassword(pwd)}
               value={this.props.authStore.password}
