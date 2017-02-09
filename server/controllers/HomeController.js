@@ -5,7 +5,6 @@ var bcrypt = require('bcrypt')
 var jwt = require('jwt-simple');
 //var jsontoken    = require('jsonwebtoken');
 
-var secret = '123456';
 const saltRounds = 10;
 
 var sampleAction = function (req,res){
@@ -26,18 +25,13 @@ var login = function(req, res){
 		else if (user)
 		{
 			// compares password with hashed one stored in database
-			bcrypt.compare(req.body.password, user.password, function(err, result) {
-				// Genarates token and save to User model
-			    var token = jwt.encode(user, secret);
-			    user.token = token
-			    user.save(function(err) {
-				    if (err){
-				    	console.log("error",err);
-				    }	
-				});
-			    //var decoded = jwt.decode(token, secret);
+			user.comparePassword(req.body.password, user.password, user, function (err, isMatch, token) {
+				if (err){
+					throw err;
+				}
 				res.json({'message': 'Login Successful', 'token': token})
 			});
+			
 		}
 		else{
 			res.json({'message': 'Authentication Failed'})
