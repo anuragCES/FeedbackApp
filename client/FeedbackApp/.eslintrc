@@ -1,0 +1,48 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "semi": [2,"always"],
+    "block-spacing": [2,"always"],
+    "comma-dangle": [2, "never"],
+    "quotes": [2,"single"],
+    "prefer-const": [2, {
+      "destructuring": "all"
+    }],
+    "no-useless-constructor": [2],
+    "no-trailing-spaces": [2,{
+      "skipBlankLines": true
+    }],
+    "camelcase": [2,{
+      "properties": "always"
+     }],
+     "react/jsx-key": [2],
+     "react/prop-types": [2],
+     "react/self-closing-comp": [2],
+     "react/jsx-closing-bracket-location": [2, "tag-aligned"],
+     "react/jsx-max-props-per-line": [2, {
+      "maximum": 2
+     }],
+     "react/jsx-indent": [2, 2],
+     "react/jsx-indent-props": [2,2],
+     "react/jsx-no-duplicate-props": [2],
+     "react/jsx-key": [2],
+     "react/jsx-no-bind": [2],
+     "react/jsx-uses-vars": [2],
+     "react/jsx-boolean-value": [2],
+  },
+}
+
+#  "react/jsx-indent": [2, 'tab'],
+#  "react/jsx-max-props-per-line": [2, {
+#     "maximum": 2
+#   }],
+# "react/jsx-closing-bracket-location": [2, "tag-aligned"],
+# "react/jsx-no-duplicate-props": [2]
