@@ -1,6 +1,8 @@
 'use strict'
 var home = require('./../controllers/HomeController');
 
+var sessioncontrol = require('./../controllers/SessionController');
+
 module.exports = function(app){
 
 	app.get('/', function(req,res){
@@ -15,5 +17,11 @@ module.exports = function(app){
 	//API for Signup
 	app.post('/signup', function(req, res){
 		home.Signup(req, res);
+	});
+
+	//API for Sessions Listing
+
+	app.get('/sessions', function(req, res){
+		sessioncontrol.sessionlistcontrol(req, res);
 	});
 }

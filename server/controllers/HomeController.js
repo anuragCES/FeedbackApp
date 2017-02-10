@@ -29,7 +29,8 @@ var login = function(req, res){
 				if (err){
 					throw err;
 				}
-				res.json({'message': 'Login Successful', 'token': token})
+				res.json({'message': 'Login Successful', 'token': token, 'firstname': user.firstname, 
+					'lastname': user.lastname, 'email': user.email})
 			});
 			
 		}
@@ -50,7 +51,7 @@ var signup = function(req, res){
 		if(err){
 			console.log('Hash Error', err);
 		}
-		console.log('Password Hasing Successful', hash)
+		console.log('Password Hashing Successful', hash)
 		users.password = hash
 		users.email= req.body.email;
 		users.save(function(err) {
