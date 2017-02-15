@@ -24,4 +24,14 @@ module.exports = function(app){
 	app.get('/sessions', function(req, res){
 		sessioncontrol.sessionlistcontrol(req, res);
 	});
+
+	//API for Listing User Session
+	app.post('/create-session', function(req, res){
+		sessioncontrol.sessioncreatecontrol(req, res);
+	});
+
+	//API for Updating User Session
+	app.post('/update-session/:id', function(req, res){
+		sessioncontrol.sessionupdatecontrol(req, res);
+	});
 }
