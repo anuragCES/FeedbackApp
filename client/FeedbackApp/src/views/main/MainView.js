@@ -5,11 +5,11 @@ import Routes from '../../routes/Routes';
 import * as store from '../../stores';
 
 export default class MainView extends Component {
-  render(){
+  render () {
     return(
       <Provider { ...store}>
         <Routes />
       </Provider>
-    )
+    );
   }
 }

@@ -1,25 +1,27 @@
-import React, { PropTypes, Component } from 'react'
-// Components
-import { View, TextInput, Text } from 'react-native'
+// React
+import React, { PropTypes, Component } from 'react';
 
-import Icon from 'react-native-vector-icons/EvilIcons'
+// Components
+import { View, TextInput, Text } from 'react-native';
+import Icon from 'react-native-vector-icons/EvilIcons';
 
 // Styles
-import styles from './styles'
+import styles from './styles';
 
-class TextInputComponent extends Component {
+export default class TextInputComponent extends Component {
   constructor (props) {
-    super(props)
+    super(props);
     this.state = {
-      value: props.value,
-    }
+      value: props.value
+    };
   }
   handleOnChange = (value) => {
-    this.setState({value: value})
-    this.props.onChange(value)
+    this.setState({value: value});
+    this.props.onChange(value);
   }
   render () {
-    const { icon, textStyle, placeholder, isPassword, placeholderTextColor, color } = this.props
+    const defaultTextStyle = {flex: 1, marginTop: 15};
+    const { icon, textStyle, placeholder, isPassword, placeholderTextColor, color } = this.props;
     return (
       <View style={styles.textInputContainer}>
         <View style={styles.iconContainer}>
@@ -31,7 +33,7 @@ class TextInputComponent extends Component {
         </View>
         <View style={styles.textInputView}>
           <TextInput
-            style={textStyle}
+            style={{...defaultTextStyle, ...textStyle}}
             underlineColorAndroid='transparent'
             background='rgba(0,0,0,0)'
             placeholder={placeholder}
@@ -42,7 +44,7 @@ class TextInputComponent extends Component {
           />
         </View>
       </View>
-    )
+    );
   }
 }
 TextInputComponent.defaultProps = {
@@ -51,8 +53,8 @@ TextInputComponent.defaultProps = {
   textStyle: {color: 'white'},
   placeholderTextColor: 'white',
   iconSet: 'EvilIcons',
-  color: 'white',
-}
+  color: 'white'
+};
 TextInputComponent.propTypes = {
   icon: PropTypes.string,
   textStyle: PropTypes.object,
@@ -62,7 +64,5 @@ TextInputComponent.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.string,
   iconSet: PropTypes.string,
-  color: PropTypes.string,
-}
-
-export default TextInputComponent
+  color: PropTypes.string
+};

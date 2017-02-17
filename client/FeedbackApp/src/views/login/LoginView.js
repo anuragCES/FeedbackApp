@@ -1,31 +1,35 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {Text, TextInput, View, TouchableHighlight, Image} from 'react-native';
 import {inject,observer} from 'mobx-react/native';
-import TextInputComponent from '../../components/input/TextInput'
+import TextInputComponent from '../../components/input/TextInput';
 
 // to dismiss soft keyboard
-import dismissKeyboard from 'dismissKeyboard'
+import dismissKeyboard from 'dismissKeyboard';
 
 // Styles
-import styles from './styles'
+import styles from './styles';
 
-const isPassword = true
+const isPassword = true;
 
 @inject('authStore')
 @observer
 export default class LoginView extends Component {
 
   login () {
-    dismissKeyboard()
-    console.warn('login clicked')
-    // this.props.loginUserRequest({
-    //   username: this.props.authStore.username,
-    //   password: this.props.authStore.password,
-    // })
+    dismissKeyboard();
+    console.warn('login clicked');
   }
 
-  render(){
-    return(
+  handleUsernameChange = (username) => {
+    this.props.authStore.setUsername(username);
+  }
+
+  handlePasswordChange = (pwd) => {
+    this.props.authStore.setPassword(pwd);
+  }
+// TODO: use constant for colors
+  render () {
+    return (
       <View style={styles.containerView}>
         <Image style={styles.backgroundImageView} source={require('./background.png')}>
           <View style={styles.logoStyle}>
@@ -38,20 +42,21 @@ export default class LoginView extends Component {
             <TextInputComponent
               icon='user'
               placeholder='Enter User Name'
-              onChange={(username) => this.props.authStore.setUsername(username)}
+              onChange={this.handleUsernameChange}
               value={this.props.authStore.username}
             />
             <TextInputComponent
               icon='lock'
               placeholder='Enter Password'
-              onChange={(pwd) => this.props.authStore.setPassword(pwd)}
+              onChange={this.handlePasswordChange}
               value={this.props.authStore.password}
-              isPassword={isPassword}
+              isPassword
             />
             <TouchableHighlight
               style={styles.loginTouchable}
               onPress={this.login}
-              underlayColor='rgba(255, 255, 255, 0.25)' >
+              underlayColor='rgba(255, 255, 255, 0.25)'
+            >
               <Text  style={styles.loginText}>
                 Log In
               </Text>
@@ -59,6 +64,10 @@ export default class LoginView extends Component {
           </View>
         </Image>
       </View>
-        )
-        }
-        }
+    );
+  }
+}
+
+LoginView.propTypes = {
+  authStore: PropTypes.object
+};

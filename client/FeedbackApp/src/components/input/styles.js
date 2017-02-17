@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   textInputContainer: {
@@ -9,10 +9,10 @@ export default StyleSheet.create({
   },
   iconContainer: {
     justifyContent: 'center',
-    alignItems: 'flex-end',
+    alignItems: 'flex-end'
   },
   textInputView: {
     flex: 1,
-    height: 50,
-  },
-})
+    height: 50
+  }
+});

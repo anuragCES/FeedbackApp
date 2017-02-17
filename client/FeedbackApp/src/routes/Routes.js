@@ -5,7 +5,10 @@ import {LoginView} from '../views/login';
 export default () => (
   <Router>
     <Scene key='root' hideNavBar>
-      <Scene key='login' component={LoginView} title='Login' />
+      <Scene key='login'
+        component={LoginView}
+        title='Login'
+      />
     </Scene>
   </Router>
-)
+);

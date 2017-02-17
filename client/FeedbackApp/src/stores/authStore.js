@@ -7,10 +7,10 @@ class AuthStore {
     this.username = username;
   }
   @action setPassword = (password) => {
-    this.password = password
+    this.password = password;
   }
 }
 
 const authStore = new AuthStore();
 
-export default authStore
+export default authStore;

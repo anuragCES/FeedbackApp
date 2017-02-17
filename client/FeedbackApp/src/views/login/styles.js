@@ -1,7 +1,4 @@
-import { StyleSheet } from 'react-native'
-
-// Utils
-// import colors from 'utils/colors'
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   containerView: {
@@ -10,12 +7,13 @@ export default StyleSheet.create({
     height: null,
     flexDirection: 'column',
     justifyContent: 'space-around',
+    backgroundColor: 'transparent'
   },
   backgroundImageView: {
     flex: 1,
     width: null,
     height: null,
-    alignItems: 'center',
+    alignItems: 'center'
   },
   loginTouchable: {
     height: 50,
@@ -23,28 +21,28 @@ export default StyleSheet.create({
     width: 250,
     backgroundColor: 'mediumseagreen',
     alignItems: 'center',
-    borderRadius: 25,
+    borderRadius: 25
   },
   loginText: {
-  marginTop: 15,
-  fontWeight: 'bold',
-  color: 'white',
-},
-logoStyle: {
-  flex: 1,
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'center',
-},
-textStyle: {
-  color: 'white',
-  fontWeight: 'bold',
-  fontSize: 30,
-},
-textInputStyle: {
-  flex: 2,
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-}
-})
+    marginTop: 15,
+    fontWeight: 'bold',
+    color: 'white'
+  },
+  logoStyle: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 30
+  },
+  textInputStyle: {
+    flex: 2,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+});
