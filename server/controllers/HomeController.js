@@ -5,10 +5,10 @@ var bcrypt = require('bcrypt')
 var jwt = require('jwt-simple');
 //var jsontoken    = require('jsonwebtoken');
 
-const saltRounds = 10;
+// Used got bcrypt library
+var saltRounds = 10;
 
 var sampleAction = function (req,res){
-
 	res.json("Sample Response from Home Controller ")
 };
 

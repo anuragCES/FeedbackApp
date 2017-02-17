@@ -1,11 +1,13 @@
 'use strict'
 var home = require('./../controllers/HomeController');
+var middleware = require('./../config/middleware')
 
 var sessioncontrol = require('./../controllers/SessionController');
 
 module.exports = function(app){
 
-	app.get('/', function(req,res){
+	app.get('/', middleware.authentication, function(req,res){
+		console.log(req.user)
 		home.sampleAction(req,res);
 	});
 
@@ -21,17 +23,17 @@ module.exports = function(app){
 
 	//API for Sessions Listing
 
-	app.get('/sessions', function(req, res){
+	app.get('/sessions', middleware.authentication, function(req, res){
 		sessioncontrol.sessionlistcontrol(req, res);
 	});
 
 	//API for Listing User Session
-	app.post('/create-session', function(req, res){
+	app.post('/create-session', middleware.authentication, function(req, res){
 		sessioncontrol.sessioncreatecontrol(req, res);
 	});
 
 	//API for Updating User Session
-	app.post('/update-session/:id', function(req, res){
+	app.post('/update-session/:id', middleware.authentication, function(req, res){
 		sessioncontrol.sessionupdatecontrol(req, res);
 	});
 }
