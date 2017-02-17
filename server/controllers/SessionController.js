@@ -1,21 +1,40 @@
 var server = require('./../server');
-var Session = require('./../models/coffee-shop')
+var Session = require('./../models/session')
+var services = require('./../services/modelServices')
 var jwt = require('jwt-simple');
+var q = require('q')
 
 var secret = '123456';
 
 var sessionlistcontrol = function(req, res){
 	token = req.headers['authorization']
 	user = jwt.decode(token, secret)['email'];
-	console.log(user)
-	Session.find({'presenter': user}, function(err, response) {
-		  if (err) {
-		  	res.error('Data Not Found')
-		  }
 
-		  // show the admins in the past month
-		  res.json({'message': 'Listing Successful', 'result': response})
+	services.findquery(Session, user, function(err, output){
+
+		res.json(output)
+
+		}, function(err){
+			res.json(err)
 	});
+
+	// services.findquery(Session,user)
+	// .then(function(result){
+	// 	console.log("result")
+	// }).catch(function(error){
+	// 	console.log("error")
+	// });
+	// Promise function implmentation
+
+	// Session.find({'presenter': user}).then(function(response) {
+		  
+	// 	  res.json({'message': 'Listing Successful', 'result': response})
+		  	
+	// 	  },function(err){
+	// 	  // show the admins in the past 
+	// 	  res.error('Data Not Found')
+		  
+	// });
 	
 }
 
@@ -33,33 +52,30 @@ var sessioncreatecontrol = function(req, res){
 	session.url = req.body.url
 	session.updatedon = new Date(2013,11,20,2,35)
 	session.createdon = new Date(2013,11,10,2,35)
-	session.save(function(err) {
-		    if (err){
-		    	console.log("error",err);
-		    }	
-		});
-	console.log(req.body)
-	res.json('Creation Successful')
+	
+	services.createnew(session, function(err, output){
+		if(err){
+			res.json({'message': err})
+		}
+		res.json({'message': 'Session Created Successfully', 'data': output})
+	});
 }
 
-// Updated Entry by using ID 
+
 var sessionupdatecontrol = function(req, res){
 	token = req.headers['authorization']
 	user = jwt.decode(token, secret);
-	Session.findById({'_id': req.params['id']}, function(err, sess) {
-		  if (err) {
-		  	res.error('Data Not Found')
-		  }
-		  sess.serialno = req.body.serialno
-		  console.log(sess)
-		  sess.save(function(err, response){
-		  		if(err){
-		  			console.log('Error')
-		  		}
+
+	services.findbyId(Session, req.params['id'],function(err, output){
+			output.serialno = req.body.serialno
+		  	output.save()
+		  	.then(function(response){
 		  		res.json({'message': 'Listing Successful', 'result': response})
-		  });
-		  // show the admins in the past month
-		  
+
+		  	});
+
+		}, function(err){
+			res.json(err)
 	});
 }
 
