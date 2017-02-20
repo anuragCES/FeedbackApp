@@ -1,7 +1,7 @@
 'use strict'
 var home = require('./../controllers/HomeController');
-var middleware = require('./../config/middleware')
-
+var middleware = require('./../config/middleware');
+var ratingcontrol = require('./../controllers/RatingController')
 var sessioncontrol = require('./../controllers/SessionController');
 
 module.exports = function(app){
@@ -35,5 +35,15 @@ module.exports = function(app){
 	//API for Updating User Session
 	app.post('/update-session/:id', middleware.authentication, function(req, res){
 		sessioncontrol.sessionupdatecontrol(req, res);
+	});
+
+	//API for add Rating to session
+
+	app.post('/rate-session/:id', middleware.authentication, function(req, res){
+		ratingcontrol.addrate(req, res);
+	});
+
+	app.get('/ratings/:id', middleware.authentication, function(req, res){
+		ratingcontrol.getrate(req, res);
 	});
 }

@@ -33,6 +33,7 @@ UserSchema.methods.comparePassword = function (passw, user_password, user, cb) {
         if (err) {
             return cb(err);
         }
+        console.log(isMatch)
         if (!user_details.token){
 	        var token = jwt.encode(user_details, secret);
 	        user_details.update({'token': token }, function(err, output){

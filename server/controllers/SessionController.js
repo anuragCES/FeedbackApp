@@ -1,6 +1,6 @@
 var server = require('./../server');
-var Session = require('./../models/session')
-var services = require('./../services/modelServices')
+var Session = require('./../models/session');
+var services = require('./../services/modelServices');
 var jwt = require('jwt-simple');
 var q = require('q');
 
@@ -18,8 +18,6 @@ var sessionlistcontrol = function(req, res){
 
 
 var sessioncreatecontrol = function(req, res){
-	token = req.headers['authorization'];
-	user = jwt.decode(token, secret);
 	var session = Session();
 	session.serialno = req.body.serialno;
 	session.title = req.body.title;

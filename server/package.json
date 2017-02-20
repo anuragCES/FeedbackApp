@@ -22,6 +22,7 @@
     "morgan": "1.8.0",
     "node-gyp": "3.5.0",
     "nodemon": "^1.11.0",
+    "parse-json": "^2.2.0",
     "passport": "0.3.2",
     "passport-local": "1.0.0",
     "q": "1.4.1",

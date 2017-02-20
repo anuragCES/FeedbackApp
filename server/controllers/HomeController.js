@@ -5,7 +5,6 @@ var bcrypt = require('bcrypt')
 var jwt = require('jwt-simple');
 //var jsontoken    = require('jsonwebtoken');
 
-// Used got bcrypt library
 var saltRounds = 10;
 
 var sampleAction = function (req,res){
@@ -14,10 +13,10 @@ var sampleAction = function (req,res){
 
 var login = function(req, res){
 
-	User.findOne({ 'email': req.body.email }, function(err, user) {
+	User.findOne({'email': req.body.email}, function(err, user) {
 		if (err) {
 			console.log('error', err);
-		};
+		}
 		if(!user){
 				res.json({'message': 'User with this email is not found in database',
 						  'email': req.body.email})
@@ -27,7 +26,7 @@ var login = function(req, res){
 			// compares password with hashed one stored in database
 			user.comparePassword(req.body.password, user.password, user, function (err, isMatch, token) {
 				if (err){
-					throw err;
+					res.status(404).json(err)
 				}
 				res.json({'message': 'Login Successful', 'token': token, 'firstname': user.firstname, 
 					'lastname': user.lastname, 'email': user.email})
@@ -51,8 +50,8 @@ var signup = function(req, res){
 		if(err){
 			console.log('Hash Error', err);
 		}
-		console.log('Password Hashing Successful', hash)
-		users.password = hash
+		console.log('Password Hashing Successful', hash);
+		users.password = hash;
 		users.email= req.body.email;
 		users.save(function(err) {
 		    if (err){

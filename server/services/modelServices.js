@@ -34,9 +34,14 @@ var findbyId = function(model, data, cb){
 	});
 }
 
+var findonequery = function(model, cb){
+	
+}
+
 
 module.exports = {
 	findquery : findquery,
 	findbyId : findbyId,
-	createnew : createnew
+	createnew : createnew,
+	findonequery: findonequery
 }
