@@ -1,0 +1,24 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .login-form-wrapper {
+      margin: 5% 0;
+    }
+    .input-element-wrapper{
+      height: 60px;
+      .input-element {
+        width: 250px;
+      }
+    }
+    .btn-primary{
+      color: #fff;
+      background-color: #337ab7;
+      border-color: #2e6da4;
+    }
+    .login-button {
+      display: flex;
+      justify-content: center;
+    }
+}
