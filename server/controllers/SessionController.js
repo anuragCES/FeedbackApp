@@ -19,6 +19,7 @@ var sessionlistcontrol = function(req, res){
 
 var sessioncreatecontrol = function(req, res){
 	var session = Session();
+	console.log(req.body, req)
 	session.serialno = req.body.serialno;
 	session.title = req.body.title;
 	session.presenter = req.body.presenter;
